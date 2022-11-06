@@ -19,7 +19,7 @@
 
             $user = $_POST['user'];
             $email = $_POST['email'];
-            $pass = hash("sha512", $_POST['user'], false);
+            $pass = hash("sha512", $_POST['pass'], false);
 
             $sql = "INSERT INTO users (user, pass, email, is_admin) VALUES ('$user', '$pass', '$email', '0')";
 
