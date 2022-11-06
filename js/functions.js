@@ -134,3 +134,39 @@ function register_form_chck(method)
         repass_resp.innerHTML = "";
     }
 }
+
+function login_form_chck(method)
+{
+    var user_name = document.getElementById("login_user");
+
+    var password = document.getElementById("login_pass");
+
+    var form = document.getElementById("login_form");
+
+    if(method == "submit")
+    {
+        if((/^(?=.*[0-9])[a-zA-Z0-9]{5,}$/. test(user_name.value)) && (/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/. test(password.value)))
+        {
+            var date = new Date();
+            date.setTime(date.getTime()+(1*1000));
+            var exp = date.toGMTString();
+            document.cookie = "is_submitted = true; expires = "+exp+";";
+            login_resp.style.display = 'none';
+            form.submit();
+        }
+        else
+        {   
+            login_resp.style.display = 'block';
+        } 
+    }
+
+    if(method == "error")
+    {
+        login_resp.style.display = 'block';
+    }
+
+    if(method == "redirect")
+    {
+        window.location = ".";
+    }
+}
