@@ -11,9 +11,9 @@
 <body>
 
     <?php 
-        if(isset($_POST["user"]) && isset($_POST["email"]) && isset($_POST["pass"]))
+        if(isset($_POST["user"]) && isset($_POST["email"]) && isset($_POST["pass"]) && (isset($_COOKIE["is_register_submitted"])))
         {
-            $style = "style='display:none;'";
+            $style = "";
             $style_div = "";
             $text = "";
 
@@ -21,20 +21,41 @@
             $email = $_POST['email'];
             $pass = hash("sha512", $_POST['pass'], false);
 
-            $sql = "INSERT INTO users (user, pass, email, is_admin) VALUES ('$user', '$pass', '$email', '0')";
+            $data = mysqli_query($conn,"SELECT * FROM `users`");
 
-            if ($conn->query($sql) === TRUE) 
+            $is_user_exists = false;
+
+            while(($row = mysqli_fetch_array($data)) && ($is_user_exists == false))
             {
-                $text = "Sikeres regisztráció";
-            } 
-            else 
-            {
-                $text = "Error: " . $sql . "<br>" . $conn->error;
+                if(($row['user'] == $user) && ($row['pass'] == $pass))
+                {
+                    $is_user_exists = true;
+                    break;
+                }
             }
 
-            unset($_POST["user"]);
-            unset($_POST["email"]);
-            unset($_POST["pass"]);
+            if(!$is_user_exists)
+            {
+                $sql = "INSERT INTO users (user, pass, email, is_admin) VALUES ('$user', '$pass', '$email', '0')";
+
+                if ($conn->query($sql) === TRUE) 
+                {
+                    $style = "style='display:none;'";
+                    $text = "Sikeres regisztráció! <br> <a href=".">Főoldal</a>";
+                } 
+                else 
+                {
+                    $text = "Error: " . $sql . "<br>" . $conn->error;
+                }
+
+                unset($_POST["user"]);
+                unset($_POST["email"]);
+                unset($_POST["pass"]);
+            }
+            else
+            {
+                $text = "A felhasználónév már létezik!";
+            }
         }
         else
         {
@@ -76,7 +97,6 @@
     </form>
     <div id="register_state" <?php echo $style_div; ?>>
         <?php echo $text; ?>
-        <a href=".">Főoldal</a>
     </div>
 </body>
 </html>

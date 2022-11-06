@@ -112,6 +112,10 @@ function register_form_chck(method)
 
     if(method == "submit" && (user_state && email_state && pass_state && repass_state))
     {
+        var date = new Date();
+        date.setTime(date.getTime()+(1*1000));
+        var exp = date.toGMTString();
+        document.cookie = "is_register_submitted = true; expires = "+exp+";";
         form.submit();
     }
 
@@ -119,6 +123,8 @@ function register_form_chck(method)
 
     if(method == "reset")
     {
+        document.location.reload();
+
         form.reset();
 
         user_name.style.backgroundColor = "white";
@@ -150,7 +156,7 @@ function login_form_chck(method)
             var date = new Date();
             date.setTime(date.getTime()+(1*1000));
             var exp = date.toGMTString();
-            document.cookie = "is_submitted = true; expires = "+exp+";";
+            document.cookie = "is_login_submitted = true; expires = "+exp+";";
             login_resp.style.display = 'none';
             form.submit();
         }
