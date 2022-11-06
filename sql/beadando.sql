@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `user` varchar(300) COLLATE latin2_hungarian_ci NOT NULL,
   `pass` varchar(128) COLLATE latin2_hungarian_ci NOT NULL,
+  `pass` varchar(300) COLLATE latin2_hungarian_ci NOT NULL,
   `email` varchar(300) COLLATE latin2_hungarian_ci NOT NULL,
   `is_admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
