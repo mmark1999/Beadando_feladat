@@ -31,15 +31,15 @@
         //echo print_r($_POST,true);
 
 
-        if(isset($_POST["login_user"]) && isset($_POST["login_pass"])&& (isset($_COOKIE["is_submitted"])))
+        if(isset($_POST["login_user"]) && isset($_POST["login_pass"]) && (isset($_COOKIE["is_login_submitted"])))
         {
             $user = $_POST["login_user"];
             $pass = hash("sha512", $_POST['login_pass'], false);
-            $table = mysqli_query($conn,"SELECT * FROM `users`");
+            $data = mysqli_query($conn,"SELECT * FROM `users`");
 
             $is_valid_login = false;
 
-            while(($row = mysqli_fetch_array($table)) && ($is_valid_login == false))
+            while(($row = mysqli_fetch_array($data)) && ($is_valid_login == false))
             {
                 if(($row['user'] == $user) && ($row['pass'] == $pass))
                 {
