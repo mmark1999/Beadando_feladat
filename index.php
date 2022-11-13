@@ -9,10 +9,8 @@
     <script src="/js/functions.js"></script>
 </head>
 <body>
-    <?php include "inc/isauthenticated.php"; ?>
     <h1 id="title" >Üdvözöljük a Robyautó oldalán! Használt autók, megbízható forrásból</h1>
-    <a class = "link" href="register.php"><img class = "link" src="/img/register.png">Regisztráció</a>
-    <a class = "link" href="login.php"><img class = "link" src="/img/login.png">Bejelentkezés</a>
+    <?php include "inc/menu.php"; ?>
     <div class = "list">
     <table>
         <tr>

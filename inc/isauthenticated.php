@@ -7,8 +7,7 @@
     }
     if(isset($_SESSION['isauthenticated']))
     {
-        echo '<div id="logged_in">Bejelntkezve mint: '.$_SESSION['user'].'</div>';
-        echo '<form action="." method="POST"><button type="submit" name="logout" value=1>Kijelentkezés</button></form>';
+        echo 'Bejelntkezve mint: '.$_SESSION['user'].'<form action="." method="POST"><button type="submit" name="logout" value=1>Kijelentkezés</button></form>';
     }
 ?>
 

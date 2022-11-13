@@ -9,7 +9,6 @@
     <script src="/js/functions.js"></script>
 </head>
 <body>
-
     <?php 
         if(isset($_POST["user"]) && isset($_POST["email"]) && isset($_POST["pass"]) && (isset($_COOKIE["is_register_submitted"])))
         {
@@ -63,8 +62,7 @@
             $style_div = "style='display:none;'";
         }
     ?>
-
-
+    <?php include "inc/menu.php"; ?>
     <form method="POST" action="register.php" id="register_form" <?php echo $style; ?>>
         <div class = "form_element">
         <label for="user">Felhasználó név:</label>

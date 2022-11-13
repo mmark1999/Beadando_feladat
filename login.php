@@ -9,6 +9,7 @@
     <script src="/js/functions.js"></script>
 </head>
 <body>
+    <?php include "inc/menu.php"; ?>
     <form method="POST" action="login.php" id="login_form">
         <div class = "form_element">
         <label for="login_user">Felhasználó név:</label>
@@ -27,10 +28,6 @@
     <div id=login_resp style="display:none;">Hibás felhasználó név vagy jelszó!</div>
    
     <?php
-
-        //echo print_r($_POST,true);
-
-
         if(isset($_POST["login_user"]) && isset($_POST["login_pass"]) && (isset($_COOKIE["is_login_submitted"])))
         {
             $user = $_POST["login_user"];
@@ -44,6 +41,10 @@
                 if(($row['user'] == $user) && ($row['pass'] == $pass))
                 {
                     $is_valid_login = true;
+                    if($row['is_admin'] == 1)
+                    {
+                        $isadmin = 1;
+                    }
                     break;
                 }
             }
@@ -54,7 +55,8 @@
                 unset($_POST["login_pass"]);
                 session_start();
                 $_SESSION["isauthenticated"] = true;
-                $_SESSION["user"] = $user; 
+                $_SESSION["user"] = $user;
+                $_SESSION["isadmin"] = $isadmin;
                 echo "<script type='text/javascript'> login_form_chck('redirect'); </script>";
             }
             else
