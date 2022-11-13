@@ -16,7 +16,7 @@
     <div class = "list">
     <table>
         <tr>
-            <th>Név</th>
+            <th>Cím</th>
             <th>Gyártmány</th>
             <th>Típus</th>
             <th>Évjárat</th>

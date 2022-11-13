@@ -19,7 +19,7 @@ function register_form_chck(method)
 
     //User name checks
     
-    if(/^(?=.*[0-9])[a-zA-Z0-9]{5,}$/. test(user_name.value))
+    if(/^(?=.*[0-9])[a-zA-Z0-9]{5,}$/. test(user_name.value)) //regex
     {
         user_state = true;
         user_resp.innerHTML = "<img src='/img/tick.png' style='width :20 px; height : 20px'>";
@@ -43,7 +43,7 @@ function register_form_chck(method)
 
     //E-mail address checks
 
-    if(/^[a-z0-9]{1,}@[a-z]{1,}[.][a-z]{1,}$/.test(email_address.value))
+    if(/^[a-z0-9]{1,}@[a-z]{1,}[.][a-z]{1,}$/.test(email_address.value)) //regex
     {
         email_state = true;
         email_resp.innerHTML = "<img src='/img/tick.png' style='width :20 px; height : 20px'>";
@@ -64,7 +64,7 @@ function register_form_chck(method)
         }
     }
     //Password checks
-    if(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/. test(password.value))
+    if(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/. test(password.value)) //regex
     {
         pass_state = true;
         pass_resp.innerHTML = "<img src='/img/tick.png' style='width :20 px; height : 20px'>";
