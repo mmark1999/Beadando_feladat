@@ -45,3 +45,14 @@ body {
 {
   display: inline-block;
 }
+
+.star_container
+{
+  text-align: left;
+}
+
+.star
+{
+  height: 20px;
+  width: 20px;
+}
