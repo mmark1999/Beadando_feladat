@@ -11,6 +11,30 @@
 <body>
     <h1 id="title" >Üdvözöljük a Robyautó oldalán! Használt autók, megbízható forrásból</h1>
     <?php include "inc/menu.php"; ?>
+    <?php 
+        function stars($state)
+        {
+            $stars = '';
+            for($i = 0; $i<$state; $i++)
+            {
+                $stars = $stars.'<img class = "star" src="/img/star.png">';
+            }
+            for($i = 0; $i<5-$state; $i++)
+            {
+                $stars = $stars.'<img class = "star" src="/img/empty_star.png">';
+            }
+            return $stars;
+        }
+
+        if(isset($_SESSION['isauthenticated']) && isset($_POST['element']))
+        {
+            if(!isset($_SESSION['basket']))
+            {
+                $_SESSION['basket'] = array();
+            }
+           array_push($_SESSION['basket'], $_POST["element"]);
+        }
+    ?>
     <div class = "list">
     <table>
         <tr>
@@ -23,42 +47,35 @@
             <th>Állapot</th>
             <th>Ár</th>
         </tr>
-        <form method="POST", action=".">
-        <?php
-
-            function stars($state)
-            {
-                $stars = '';
-                for($i = 0; $i<$state; $i++)
+            <form method="POST", action=".">
+            <?php
+                $table = mysqli_query($conn,"SELECT * FROM `products`");
+                while($row = mysqli_fetch_array($table))
                 {
-                    $stars = $stars.'<img class = "star" src="/img/star.png">';
+                    if(((isset($_SESSION['isauthenticated'])) && (!isset($_SESSION['basket']))) || (!isset($_SESSION['isauthenticated'])) || (isset($_SESSION['isauthenticated']) && isset($_SESSION['basket']) && !in_array($row['id'], $_SESSION['basket'])))
+                    {
+                        echo '<tr>
+                        <th>'.$row['manufacture'].'</th><th>'.$row['type'].'</th>
+                        <th>'.$row['vintage'].'</th><th>'.$row['milage'].'</th>
+                        <th>'.$row['fuel'].'</th>
+                        <th>'.$row['color'].'</th>
+                        <th class = "star_container">'.stars($row['state']).'</th>
+                        <th>'.$row['price'].'</th>
+                        <th><button class="trolley_button" type="submit" name="element" value="'.$row['id'].'" style="';
+                        if(isset($_SESSION["isauthenticated"]))
+                        {
+                            echo 'display:block;">';
+                        }
+                        else
+                        {
+                            echo 'display:none;">';
+                        }
+                        echo '<img  class="trolley" src="/img/trolley.png" /></button>
+                        </tr>';
+                    }
                 }
-                for($i = 0; $i<5-$state; $i++)
-                {
-                    $stars = $stars.'<img class = "star" src="/img/empty_star.png">';
-                }
-                return $stars;
-            }
-
-            $table = mysqli_query($conn,"SELECT * FROM `products`");
-            while($row = mysqli_fetch_array($table))
-            {
-                echo '<label id="'.$row['id'].'"><tr id = '.$row['id'].'><th>'.$row['manufacture'].
-                '</th><th>'.$row['type'].'</th><th>'.$row['vintage'].'</th><th>'.$row['milage'].
-                '</th><th>'.$row['fuel'].'</th><th>'.$row['color'].'</th><th class = "star_container">'.stars($row['state']).'</th><th>'.$row['price'].
-                '</th></label><th><input type = "image" src="/img/trolley.png" class="trolley" 
-                style="';
-                if(isset($_SESSION["isauthenticated"]))
-                {
-                    echo 'display:block;';
-                }
-                else
-                {
-                    echo 'display:none';
-                }
-                echo '" alt="Submit"></th></tr>';
-            }
-        ?>
+            ?>
+            </form>
     </table>
     </div>
 </body>
