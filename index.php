@@ -1,4 +1,4 @@
-<?php include"php/db_conn.php"; ?>
+<?php include"inc/db_conn.php"; ?>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
     <script src="/js/functions.js"></script>
 </head>
 <body>
-    <?php include "php/isauthenticated.php"; ?>
+    <?php include "inc/isauthenticated.php"; ?>
     <h1 id="title" >Üdvözöljük a Robyautó oldalán! Használt autók, megbízható forrásból</h1>
     <a class = "link" href="register.php"><img class = "link" src="/img/register.png">Regisztráció</a>
     <a class = "link" href="login.php"><img class = "link" src="/img/login.png">Bejelentkezés</a>
@@ -50,4 +50,4 @@
     </div>
 </body>
 </html>
-<?php include"php/db_close.php"; ?>
+<?php include"inc/db_close.php"; ?>

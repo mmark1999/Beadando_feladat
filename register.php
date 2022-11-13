@@ -1,4 +1,4 @@
-<?php include"php/db_conn.php"; ?>
+<?php include"inc/db_conn.php"; ?>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
@@ -100,4 +100,4 @@
     </div>
 </body>
 </html>
-<?php include"php/db_close.php"; ?>
+<?php include"inc/db_close.php"; ?>
