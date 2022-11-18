@@ -1,15 +1,16 @@
+/*Essential elements*/
 body {
     background-image: url('../img/background.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 120%;
   }
-
 #title
 {
     text-align:center;
 }
 
+/*Menu bar*/
 .link
 {
   height: 25px;
@@ -17,13 +18,51 @@ body {
   display:inline;
 }
 
-.link:hover
+/*.link:hover
 {
   color: aqua;
   font-size: 200%;
   font-weight: bold;
+}*/
+#menu
+{
+  background-color: rgba(255, 0, 0, 0.75);
+  border-radius: 15px;
+  height: 7%;
+}
+#menu_bar
+{
+  background-color: grey;
+  width: 65%;
+  display: inline-flex;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 2%;
+  margin-top: 0.7%;
+}
+.menu_element
+{
+  background-color: greenyellow;
+  display: inline;
+  height: 30px;
+  border-radius: 25px;
+  border: 1px;
+  border-style: solid;
+  border-width: 2px;
+  min-width: 15%;
+  text-align: center;
+}
+#menu_info
+{
+  background-color: blueviolet;
+  display: inline;
+}
+.menu_element:hover
+{
+  background-color: blue;
 }
 
+/*Product list*/
 .trolley
 {
   height: 20px;
@@ -36,23 +75,11 @@ body {
   border: 0px;
   cursor: pointer;
 }
-
 .list
 {
   background-color: rgba(255, 0, 0, 0.75);
   width: fit-content;
 }
-
-.form_element
-{
-  white-space: nowrap;
-}
-
-.response
-{
-  display: inline-block;
-}
-
 .star_container
 {
   text-align: left;
@@ -62,4 +89,15 @@ body {
 {
   height: 20px;
   width: 20px;
+}
+
+/*REgistration and login forms*/
+.form_element
+{
+  white-space: nowrap;
+}
+
+.response
+{
+  display: inline-block;
 }

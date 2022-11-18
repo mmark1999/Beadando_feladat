@@ -74,10 +74,16 @@
         return 'style="display:'.$result.';"';
     }
 ?>
-
-<a class = "link" href="."><img class = "link" src="/img/home.png">Főoldal</a>
-<a class = "link" href="register.php" <?php echo visibility('register');?>><img class = "link" src="/img/register.png">Regisztráció</a>
-<a class = "link" href="login.php" <?php echo visibility('login');?>><img class = "link" src="/img/login.png">Bejelentkezés</a>
-<a class = "link" href="admin.php" <?php echo visibility('admin');?>><img class = "link" src="/img/admin.png">Admin oldal</a>
-<a class = "link" href="basket.php" <?php echo visibility('basket');?>><img class = "link" src="/img/basket.png">Kosár</a>
-<a class = "link" href="inc/logout.php" <?php echo visibility('logout');?>><img class = "link" src="/img/logout.png">Kijelentkezés</a>
+<div id="menu">
+    <div id = "menu_bar">
+        <div class="menu_element"><a class = "link" href="."><img class = "link" src="/img/home.png">Főoldal</a></div>
+        <div class="menu_element" <?php echo visibility('register');?>><a class = "link" href="register.php"><img class = "link" src="/img/register.png">Regisztráció</a></div>
+        <div class="menu_element" <?php echo visibility('login');?>><a class = "link" href="login.php"><img class = "link" src="/img/login.png">Bejelentkezés</a></div>
+        <div class="menu_element" <?php echo visibility('admin');?>><a class = "link" href="admin.php"><img class = "link" src="/img/admin.png">Admin oldal</a></div>
+        <div class="menu_element" <?php echo visibility('basket');?>><a class = "link" href="basket.php"><img class = "link" src="/img/basket.png">Kosár</a></div>
+        <div class="menu_element" <?php echo visibility('logout');?>><a class = "link" href="inc/logout.php"><img class = "link" src="/img/logout.png">Kijelentkezés</a></div>
+    </div>
+    <div id = "menu_info">
+        Logged in as: mmark1999
+    </div>
+</div>
